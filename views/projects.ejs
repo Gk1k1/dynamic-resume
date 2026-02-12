@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <section class="page-hero">
+            <div class="container hero-content">
+                <div class="hero-text text-center">
+                    <h1 class="hero-name animate-fade-up">My Projects</h1>
+                    <p class="hero-title animate-fade-up delay-1">Explore a showcase of my latest work, from web apps to
+                        experimental builds.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-projects">
+            <div class="container">
+                <div class="projects-grid">
+                    <% if (projects && projects.length) { %>
+                        <% projects.forEach((project, i)=> { %>
+                            <div class="project-card glass-card" style="animation-delay: <%= i * 0.1 %>s">
+                                <div class="project-header">
+                                    <span class="project-icon">📁</span>
+                                    <% if (project.link) { %>
+                                        <a href="<%= project.link %>" target="_blank" class="project-link"
+                                            title="View Source">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <% } %>
+                                </div>
+                                <h3 class="project-title">
+                                    <%= project.title %>
+                                </h3>
+                                <p class="project-desc">
+                                    <%= project.description %>
+                                </p>
+                                <div class="project-footer">
+                                    <div class="project-tech">
+                                        <% if (project.technologies && project.technologies.length) { %>
+                                            <% project.technologies.forEach(tech=> { %>
+                                                <span class="tech-tag">
+                                                    <%= tech %>
+                                                </span>
+                                                <% }); %>
+                                                    <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                                <% } else { %>
+                                    <div class="empty-state-container glass-card">
+                                        <p class="empty-state">No projects found. Check back soon!</p>
+                                    </div>
+                                    <% } %>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <style>
+                .page-hero {
+                    padding: 120px 0 60px;
+                    background: var(--gradient-hero);
+                    text-align: center;
+                }
+
+                .text-center {
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                .project-footer {
+                    margin-top: auto;
+                    padding-top: var(--gap-lg);
+                }
+
+                .empty-state-container {
+                    text-align: center;
+                    padding: var(--gap-3xl);
+                    grid-column: 1 / -1;
+                }
+            </style>

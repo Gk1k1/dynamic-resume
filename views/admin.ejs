@@ -1,0 +1,213 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <section class="admin-hero">
+            <div class="container">
+                <h1 class="admin-title">⚙️ Admin Dashboard</h1>
+                <p class="admin-subtitle">Manage your resume data. Changes reflect on the main site immediately.</p>
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <div class="container admin-grid">
+
+                <!-- Flash Messages -->
+                <% if (success) { %>
+                    <div class="alert alert-success" id="flashAlert">
+                        <span>✅</span>
+                        <%= success %>
+                            <button class="alert-close" onclick="this.parentElement.remove()">×</button>
+                    </div>
+                    <% } %>
+                        <% if (error) { %>
+                            <div class="alert alert-error" id="flashAlert">
+                                <span>❌</span>
+                                <%= error %>
+                                    <button class="alert-close" onclick="this.parentElement.remove()">×</button>
+                            </div>
+                            <% } %>
+
+                                <!-- Update Profile -->
+                                <div class="admin-card glass-card">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">👤</span> Update Profile
+                                    </h2>
+                                    <form action="/admin/profile" method="POST" class="admin-form">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="profileName">Full Name</label>
+                                                <input type="text" id="profileName" name="name" value="<%= name %>"
+                                                    placeholder="Your Name" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="profileTitle">Job Title</label>
+                                                <input type="text" id="profileTitle" name="title"
+                                                    value="<%= typeof title !== 'undefined' ? title : '' %>"
+                                                    placeholder="Full-Stack Developer" />
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="profileEmail">Email</label>
+                                                <input type="email" id="profileEmail" name="email" value="<%= email %>"
+                                                    placeholder="you@example.com" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="profilePhone">Phone</label>
+                                                <input type="text" id="profilePhone" name="phone" value="<%= phone %>"
+                                                    placeholder="+1 (555) 000-0000" />
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="profileLocation">Location</label>
+                                                <input type="text" id="profileLocation" name="location"
+                                                    value="<%= location %>" placeholder="City, State" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="profileLinkedin">LinkedIn URL</label>
+                                                <input type="url" id="profileLinkedin" name="linkedin"
+                                                    value="<%= linkedin %>" placeholder="https://linkedin.com/in/..." />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="profileGithub">GitHub URL</label>
+                                            <input type="url" id="profileGithub" name="github" value="<%= github %>"
+                                                placeholder="https://github.com/..." />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <span>💾</span> Save Profile
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Update Summary -->
+                                <div class="admin-card glass-card">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">📝</span> Update Summary
+                                    </h2>
+                                    <form action="/admin/summary" method="POST" class="admin-form">
+                                        <div class="form-group">
+                                            <label for="summaryText">Professional Summary</label>
+                                            <textarea id="summaryText" name="summary" rows="5"
+                                                placeholder="Write a brief summary about yourself..."><%= summary %></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <span>💾</span> Update Summary
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Update Skills -->
+                                <div class="admin-card glass-card">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">🛠️</span> Update Skills
+                                    </h2>
+                                    <form action="/admin/skills" method="POST" class="admin-form">
+                                        <div class="form-group">
+                                            <label for="skillsInput">Skills (comma-separated)</label>
+                                            <textarea id="skillsInput" name="skills" rows="3"
+                                                placeholder="JavaScript, React, Node.js, Docker..."><%= skills ? skills.join(', ') : '' %></textarea>
+                                        </div>
+                                        <div class="current-skills">
+                                            <p class="skills-label">Current Skills:</p>
+                                            <div class="skills-preview">
+                                                <% if (skills && skills.length) { %>
+                                                    <% skills.forEach(skill=> { %>
+                                                        <span class="skill-chip-sm">
+                                                            <%= skill %>
+                                                        </span>
+                                                        <% }); %>
+                                                            <% } else { %>
+                                                                <span class="empty-state-sm">No skills added</span>
+                                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <span>💾</span> Update Skills
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Add Project -->
+                                <div class="admin-card glass-card">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">🚀</span> Add New Project
+                                    </h2>
+                                    <form action="/admin/projects" method="POST" class="admin-form">
+                                        <div class="form-group">
+                                            <label for="projectTitle">Project Title *</label>
+                                            <input type="text" id="projectTitle" name="title"
+                                                placeholder="My Awesome Project" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="projectDesc">Description *</label>
+                                            <textarea id="projectDesc" name="description" rows="3"
+                                                placeholder="Describe what the project does..." required></textarea>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="projectTech">Technologies (comma-separated)</label>
+                                                <input type="text" id="projectTech" name="technologies"
+                                                    placeholder="React, Node.js, MongoDB" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="projectLink">Project Link</label>
+                                                <input type="url" id="projectLink" name="link"
+                                                    placeholder="https://github.com/..." />
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-accent">
+                                            <span>➕</span> Add Project
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Existing Projects -->
+                                <div class="admin-card glass-card admin-card--full">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">📋</span> Existing Projects
+                                    </h2>
+                                    <% if (projects && projects.length) { %>
+                                        <div class="projects-list">
+                                            <% projects.forEach(project=> { %>
+                                                <div class="project-item">
+                                                    <div class="project-item-info">
+                                                        <h4>
+                                                            <%= project.title %>
+                                                        </h4>
+                                                        <p>
+                                                            <%= project.description.substring(0, 100) %>
+                                                                <%= project.description.length> 100 ? '...' : '' %>
+                                                        </p>
+                                                        <div class="project-item-tech">
+                                                            <% if (project.technologies && project.technologies.length)
+                                                                { %>
+                                                                <% project.technologies.forEach(tech=> { %>
+                                                                    <span class="tech-tag-sm">
+                                                                        <%= tech %>
+                                                                    </span>
+                                                                    <% }); %>
+                                                                        <% } %>
+                                                        </div>
+                                                    </div>
+                                                    <form action="/admin/projects/delete/<%= project.id %>"
+                                                        method="POST" class="delete-form">
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            title="Delete project"
+                                                            onclick="return confirm('Delete this project?')">
+                                                            🗑️ Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <% }); %>
+                                        </div>
+                                        <% } else { %>
+                                            <p class="empty-state">No projects yet. Add one above!</p>
+                                            <% } %>
+                                </div>
+
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>

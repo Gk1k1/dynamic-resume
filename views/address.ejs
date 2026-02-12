@@ -1,0 +1,146 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <section class="page-hero">
+            <div class="container hero-content">
+                <div class="hero-text text-center">
+                    <h1 class="hero-name animate-fade-up">Contact Address</h1>
+                    <p class="hero-title animate-fade-up delay-1">Feel free to reach out or visit me at my location.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-address">
+            <div class="container">
+                <div class="glass-card address-card animate-fade-up delay-2">
+                    <div class="address-header">
+                        <div class="address-icon">📍</div>
+                        <h2 class="address-title">Location Details</h2>
+                    </div>
+
+                    <div class="address-content">
+                        <div class="address-item">
+                            <span class="address-label">Mailing Address:</span>
+                            <p class="address-value">
+                                <%= address %>
+                            </p>
+                        </div>
+
+                        <div class="address-item">
+                            <span class="address-label">Current City:</span>
+                            <p class="address-value">
+                                <%= location %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder glass-card">
+                        <div class="map-icon">🗺️</div>
+                        <p>Interactive Map coming soon...</p>
+                    </div>
+
+                    <div class="address-footer">
+                        <a href="mailto:<%= email %>" class="btn btn-primary">Send an Email</a>
+                        <a href="/" class="btn btn-outline">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <style>
+                .page-hero {
+                    padding: 120px 0 60px;
+                    background: var(--gradient-hero);
+                    text-align: center;
+                }
+
+                .text-center {
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                .address-card {
+                    max-width: 700px;
+                    margin: 0 auto;
+                }
+
+                .address-header {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--gap-md);
+                    margin-bottom: var(--gap-xl);
+                    border-bottom: 1px solid var(--color-border);
+                    padding-bottom: var(--gap-md);
+                }
+
+                .address-icon {
+                    font-size: 2.5rem;
+                }
+
+                .address-title {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin: 0;
+                }
+
+                .address-content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--gap-lg);
+                    margin-bottom: var(--gap-2xl);
+                }
+
+                .address-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+
+                .address-label {
+                    font-family: var(--font-mono);
+                    font-size: 0.85rem;
+                    color: var(--color-accent);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+
+                .address-value {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: var(--color-text);
+                    line-height: 1.5;
+                }
+
+                .map-placeholder {
+                    height: 200px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: var(--gap-md);
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px dashed var(--color-border);
+                    margin-bottom: var(--gap-xl);
+                    color: var(--color-text-muted);
+                }
+
+                .map-icon {
+                    font-size: 3rem;
+                    filter: grayscale(1);
+                    opacity: 0.5;
+                }
+
+                .address-footer {
+                    display: flex;
+                    gap: var(--gap-md);
+                    justify-content: center;
+                }
+
+                @media (max-width: 600px) {
+                    .address-footer {
+                        flex-direction: column;
+                    }
+                }
+            </style>

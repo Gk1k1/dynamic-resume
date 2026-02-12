@@ -1,0 +1,93 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <section class="page-hero">
+            <div class="container hero-content">
+                <div class="hero-text text-center">
+                    <h1 class="hero-name animate-fade-up">Professional Skills</h1>
+                    <p class="hero-title animate-fade-up delay-1">A comprehensive overview of my technical expertise and
+                        tools.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-skills">
+            <div class="container">
+                <div class="glass-card skills-full-card">
+                    <h2 class="section-title">
+                        <span class="title-accent">Σ</span> Skills & Technologies
+                    </h2>
+                    <p class="section-subtitle">I've spent years honing my craft across various domains. Here's a deeper
+                        look at what I bring to the table.</p>
+
+                    <div class="skills-grid-lg">
+                        <% if (skills && skills.length) { %>
+                            <% skills.forEach((skill, i)=> { %>
+                                <div class="skill-item glass-card" style="animation-delay: <%= i * 0.05 %>s">
+                                    <div class="skill-dot"></div>
+                                    <span class="skill-name">
+                                        <%= skill %>
+                                    </span>
+                                </div>
+                                <% }); %>
+                                    <% } else { %>
+                                        <p class="empty-state">No skills added yet.</p>
+                                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <style>
+                .page-hero {
+                    padding: 120px 0 60px;
+                    background: var(--gradient-hero);
+                    text-align: center;
+                }
+
+                .text-center {
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                .section-subtitle {
+                    margin-bottom: var(--gap-xl);
+                    color: var(--color-text-secondary);
+                }
+
+                .skills-grid-lg {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: var(--gap-md);
+                    margin-top: var(--gap-xl);
+                }
+
+                .skill-item {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--gap-md);
+                    padding: var(--gap-md);
+                    transition: all var(--transition-base);
+                }
+
+                .skill-item:hover {
+                    transform: scale(1.05);
+                    border-color: var(--color-primary);
+                    background: rgba(99, 102, 241, 0.1);
+                }
+
+                .skill-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: var(--color-accent);
+                    box-shadow: 0 0 10px var(--color-accent);
+                }
+
+                .skill-name {
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                }
+            </style>

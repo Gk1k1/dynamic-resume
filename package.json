@@ -1,0 +1,21 @@
+{
+  "name": "dynamic-resume",
+  "version": "1.0.0",
+  "description": "A full-stack dynamic resume web application with Node.js, Express, and EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "keywords": ["resume", "portfolio", "express", "ejs"],
+  "author": "",
+  "license": "ISC"
+}

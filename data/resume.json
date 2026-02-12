@@ -1,0 +1,96 @@
+{
+    "name": "Gokul p krishna",
+    "title": "Full-Stack Developer",
+    "email": "gokulpkrishna44@gmail.com",
+    "phone": "8086455401",
+    "location": "banglore karnataka",
+    "address": "Gokul p krishna, Whitefield(H), MG road, banglore, pin: 68554",
+    "linkedin": "https://linkedin.com/in/gokulpkrishna44",
+    "github": "https://github.com/gokulpkrishna44",
+    "summary": "Passionate full-stack developer with 5+ years of experience building scalable web applications and microservices. Proficient in modern JavaScript frameworks, cloud technologies, and agile methodologies. Committed to writing clean, maintainable code and delivering exceptional user experiences.",
+    "skills": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Express",
+        "Python",
+        "PostgreSQL",
+        "MongoDB",
+        "Docker",
+        "AWS",
+        "Git",
+        "REST APIs",
+        "GraphQL",
+        "CI/CD"
+    ],
+    "projects": [
+        {
+            "id": "1",
+            "title": "E-Commerce Platform",
+            "description": "A full-featured e-commerce platform with real-time inventory management, payment processing via Stripe, and an admin dashboard for analytics.",
+            "technologies": [
+                "React",
+                "Node.js",
+                "PostgreSQL",
+                "Stripe API",
+                "Redis"
+            ],
+            "link": "https://github.com/gokulpkrishna44/ecommerce-platform"
+        },
+        {
+            "id": "2",
+            "title": "Task Management App",
+            "description": "A collaborative task management application with real-time updates, drag-and-drop Kanban boards, and team workspace features.",
+            "technologies": [
+                "Vue.js",
+                "Express",
+                "MongoDB",
+                "Socket.io",
+                "JWT"
+            ],
+            "link": "https://github.com/gokulpkrishna44/taskflow"
+        },
+        {
+            "id": "3",
+            "title": "Weather Analytics Dashboard",
+            "description": "An interactive weather analytics dashboard that aggregates data from multiple APIs and visualizes trends with dynamic charts.",
+            "technologies": [
+                "React",
+                "D3.js",
+                "Python",
+                "Flask",
+                "OpenWeather API"
+            ],
+            "link": "https://github.com/gokulpkrishna44/weather-dash"
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelor of Science in Computer Science",
+            "institution": "University of California, Berkeley",
+            "year": "2019",
+            "gpa": "3.8/4.0"
+        },
+        {
+            "degree": "Full-Stack Web Development Bootcamp",
+            "institution": "Hack Reactor",
+            "year": "2020",
+            "gpa": ""
+        }
+    ],
+    "experience": [
+        {
+            "role": "Senior Full-Stack Developer",
+            "company": "TechNova Inc.",
+            "duration": "2022 - Present",
+            "description": "Lead development of microservices architecture serving 1M+ users. Mentored junior developers and established code review processes."
+        },
+        {
+            "role": "Full-Stack Developer",
+            "company": "CloudBridge Solutions",
+            "duration": "2020 - 2022",
+            "description": "Built and maintained RESTful APIs and React-based frontends for enterprise clients. Reduced API response times by 40%."
+        }
+    ]
+}
