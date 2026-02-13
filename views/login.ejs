@@ -1,0 +1,139 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+
+        <section class="login-section">
+            <div class="container flex-center">
+                <div class="login-card glass-card animate-fade-up">
+                    <div class="login-header">
+                        <span class="lock-icon">🔒</span>
+                        <h1 class="login-title">Welcome Back</h1>
+                        <p class="login-subtitle">Sign in to manage your resume</p>
+                    </div>
+
+                    <% if (error) { %>
+                        <div class="alert alert-error">
+                            <span>❌</span>
+                            <%= error %>
+                        </div>
+                        <% } %>
+
+                            <% if (success) { %>
+                                <div class="alert alert-success">
+                                    <span>✅</span>
+                                    <%= success %>
+                                </div>
+                                <% } %>
+
+                                    <form action="/login" method="POST" class="login-form">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" id="username" name="username"
+                                                placeholder="Enter your username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" id="password" name="password" placeholder="••••••••"
+                                                required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-full">
+                                            Sign In
+                                        </button>
+                                    </form>
+
+                                    <div class="login-footer">
+                                        <p>Default Admin: <code>admin</code> / <code>admin123</code></p>
+                                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <style>
+                .login-section {
+                    min-height: 80vh;
+                    display: flex;
+                    align-items: center;
+                    padding: var(--gap-xl) 0;
+                    background: var(--gradient-hero);
+                }
+
+                .flex-center {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .login-card {
+                    width: 100%;
+                    max-width: 450px;
+                    padding: var(--gap-xl);
+                    text-align: center;
+                }
+
+                .lock-icon {
+                    font-size: 3rem;
+                    display: block;
+                    margin-bottom: var(--gap-md);
+                }
+
+                .login-title {
+                    font-size: 2rem;
+                    margin-bottom: var(--gap-xs);
+                    color: var(--color-text-primary);
+                }
+
+                .login-subtitle {
+                    color: var(--color-text-secondary);
+                    margin-bottom: var(--gap-xl);
+                }
+
+                .login-form {
+                    text-align: left;
+                }
+
+                .btn-full {
+                    width: 100%;
+                    margin-top: var(--gap-md);
+                    padding: 14px;
+                    font-size: 1.1rem;
+                }
+
+                .login-footer {
+                    margin-top: var(--gap-xl);
+                    padding-top: var(--gap-md);
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    font-size: 0.9rem;
+                    color: var(--color-text-secondary);
+                }
+
+                .login-footer code {
+                    background: rgba(255, 255, 255, 0.1);
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    color: var(--color-accent);
+                }
+
+                .alert {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px;
+                    border-radius: 8px;
+                    margin-bottom: var(--gap-lg);
+                    font-size: 0.95rem;
+                    text-align: left;
+                }
+
+                .alert-error {
+                    background: rgba(239, 68, 68, 0.1);
+                    border: 1px solid rgba(239, 68, 68, 0.2);
+                    color: #ef4444;
+                }
+
+                .alert-success {
+                    background: rgba(34, 197, 94, 0.1);
+                    border: 1px solid rgba(34, 197, 94, 0.2);
+                    color: #22c55e;
+                }
+            </style>

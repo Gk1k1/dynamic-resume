@@ -163,6 +163,40 @@
                                     </form>
                                 </div>
 
+                                <!-- Add Experience -->
+                                <div class="admin-card glass-card">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">💼</span> Add New Experience
+                                    </h2>
+                                    <form action="/admin/experience" method="POST" class="admin-form">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="expRole">Role/Title *</label>
+                                                <input type="text" id="expRole" name="role"
+                                                    placeholder="Senior Developer" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="expCompany">Company *</label>
+                                                <input type="text" id="expCompany" name="company"
+                                                    placeholder="Tech Corp" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="expDuration">Duration *</label>
+                                            <input type="text" id="expDuration" name="duration"
+                                                placeholder="Jan 2020 - Present" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="expDesc">Description</label>
+                                            <textarea id="expDesc" name="description" rows="3"
+                                                placeholder="Describe your responsibilities and achievements..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-accent">
+                                            <span>➕</span> Add Experience
+                                        </button>
+                                    </form>
+                                </div>
+
                                 <!-- Existing Projects -->
                                 <div class="admin-card glass-card admin-card--full">
                                     <h2 class="admin-card-title">
@@ -204,6 +238,45 @@
                                         </div>
                                         <% } else { %>
                                             <p class="empty-state">No projects yet. Add one above!</p>
+                                            <% } %>
+                                </div>
+
+                                <!-- Existing Experiences -->
+                                <div class="admin-card glass-card admin-card--full">
+                                    <h2 class="admin-card-title">
+                                        <span class="card-icon">📋</span> Existing Experiences
+                                    </h2>
+                                    <% if (experience && experience.length) { %>
+                                        <div class="projects-list">
+                                            <% experience.forEach(exp=> { %>
+                                                <div class="project-item">
+                                                    <div class="project-item-info">
+                                                        <h4>
+                                                            <%= exp.role %> at <%= exp.company %>
+                                                        </h4>
+                                                        <p>
+                                                            <%= exp.duration %>
+                                                        </p>
+                                                        <p>
+                                                            <%= exp.description ? exp.description.substring(0, 100) : ''
+                                                                %>
+                                                                <%= exp.description && exp.description.length> 100 ?
+                                                                    '...' : '' %>
+                                                        </p>
+                                                    </div>
+                                                    <form action="/admin/experience/delete/<%= exp.id %>" method="POST"
+                                                        class="delete-form">
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            title="Delete experience"
+                                                            onclick="return confirm('Delete this experience?')">
+                                                            🗑️ Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <% }); %>
+                                        </div>
+                                        <% } else { %>
+                                            <p class="empty-state">No experiences yet. Add one above!</p>
                                             <% } %>
                                 </div>
 

@@ -94,6 +94,54 @@ exports.getAddressPage = (req, res, next) => {
     }
 };
 
+exports.getExperiencePage = (req, res, next) => {
+    try {
+        const data = readData();
+        res.render('experience', { ...data, title: 'Experience - ' + (data.name || 'Resume') });
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.addExperiencePublic = (req, res, next) => {
+    try {
+        const data = readData();
+        const { role, company, duration, description } = req.body;
+
+        if (!role || !company || !duration) {
+            return res.redirect('/experience');
+        }
+
+        const newExperience = {
+            id: Date.now().toString(),
+            role: role.trim(),
+            company: company.trim(),
+            duration: duration.trim(),
+            description: description ? description.trim() : '',
+        };
+
+        data.experience = data.experience || [];
+        data.experience.push(newExperience);
+        writeData(data);
+
+        res.redirect('/experience');
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.deleteExperiencePublic = (req, res, next) => {
+    try {
+        const data = readData();
+        const { id } = req.params;
+        data.experience = (data.experience || []).filter((e) => e.id !== id);
+        writeData(data);
+        res.redirect('/experience');
+    } catch (err) {
+        next(err);
+    }
+};
+
 // ──────────── Admin Controller ────────────
 
 exports.getAdminDashboard = (req, res, next) => {
@@ -196,6 +244,45 @@ exports.updateProfile = (req, res, next) => {
 
         writeData(data);
         res.redirect('/admin?success=Profile updated successfully!');
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.addExperience = (req, res, next) => {
+    try {
+        const data = readData();
+        const { role, company, duration, description } = req.body;
+
+        if (!role || !company || !duration) {
+            return res.redirect('/admin?error=Role, company, and duration are required.');
+        }
+
+        const newExperience = {
+            id: Date.now().toString(),
+            role: role.trim(),
+            company: company.trim(),
+            duration: duration.trim(),
+            description: description ? description.trim() : '',
+        };
+
+        data.experience = data.experience || [];
+        data.experience.push(newExperience);
+        writeData(data);
+
+        res.redirect('/admin?success=Experience added successfully!');
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.deleteExperience = (req, res, next) => {
+    try {
+        const data = readData();
+        const { id } = req.params;
+        data.experience = (data.experience || []).filter((e) => e.id !== id);
+        writeData(data);
+        res.redirect('/admin?success=Experience deleted successfully!');
     } catch (err) {
         next(err);
     }

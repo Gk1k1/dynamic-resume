@@ -8,14 +8,21 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "express-session": "^1.19.0",
     "method-override": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
   },
-  "keywords": ["resume", "portfolio", "express", "ejs"],
+  "keywords": [
+    "resume",
+    "portfolio",
+    "express",
+    "ejs"
+  ],
   "author": "",
   "license": "ISC"
 }

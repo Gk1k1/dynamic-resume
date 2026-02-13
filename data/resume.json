@@ -83,12 +83,14 @@
   ],
   "experience": [
     {
+      "id": "exp1",
       "role": "Senior Full-Stack Developer",
       "company": "TechNova Inc.",
       "duration": "2022 - Present",
       "description": "Lead development of microservices architecture serving 1M+ users. Mentored junior developers and established code review processes."
     },
     {
+      "id": "exp2",
       "role": "Full-Stack Developer",
       "company": "CloudBridge Solutions",
       "duration": "2020 - 2022",

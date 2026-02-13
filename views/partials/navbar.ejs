@@ -8,9 +8,18 @@
             <a href="/" class="nav-link">Home</a>
             <a href="/skills" class="nav-link">Skills</a>
             <a href="/projects" class="nav-link">Projects</a>
+            <a href="/experience" class="nav-link">Experience</a>
             <a href="/address" class="nav-link">Address</a>
-            <a href="/#education" class="nav-link">Education</a>
             <a href="/admin" class="nav-link nav-link--admin">Admin</a>
+
+            <% if (typeof user !=='undefined' && user) { %>
+                <div class="user-menu">
+                    <span class="nav-user">Hi, <%= user.username %></span>
+                    <a href="/logout" class="nav-link nav-logout">Logout</a>
+                </div>
+                <% } else { %>
+                    <a href="/login" class="nav-link nav-login">Login</a>
+                    <% } %>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
             <span></span>
