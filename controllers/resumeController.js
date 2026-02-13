@@ -49,6 +49,33 @@ exports.getSkillsPage = (req, res, next) => {
     }
 };
 
+exports.addSkill = (req, res, next) => {
+    try {
+        const data = readData();
+        const { skillName } = req.body;
+
+        if (!skillName || !skillName.trim()) {
+            return res.redirect('/skills');
+        }
+
+        const newSkill = skillName.trim();
+
+        // Add if not already present
+        if (!data.skills) {
+            data.skills = [];
+        }
+
+        if (!data.skills.includes(newSkill)) {
+            data.skills.push(newSkill);
+            writeData(data);
+        }
+
+        res.redirect('/skills');
+    } catch (err) {
+        next(err);
+    }
+};
+
 exports.getProjectsPage = (req, res, next) => {
     try {
         const data = readData();
